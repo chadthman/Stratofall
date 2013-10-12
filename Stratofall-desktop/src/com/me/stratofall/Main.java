@@ -1,4 +1,4 @@
-package com.me.mygdxgame;
+package com.me.stratofall;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
@@ -11,6 +11,6 @@ public class Main {
 		cfg.width = 480;
 		cfg.height = 320;
 		
-		new LwjglApplication(new MyGdxGame(), cfg);
+		new LwjglApplication(new Stratofall(), cfg);
 	}
 }

@@ -5,15 +5,15 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using com.badlogic.gdx.backends.ios;
-using com.me.mygdxgame;
+using com.me.stratofall;
 
-namespace com.me.mygdxgame
+namespace com.me.stratofall
 {		
 	public class Application
 	{
 		[Register ("AppDelegate")]
 		public partial class AppDelegate : IOSApplication {
-			public AppDelegate(): base(new MyGdxGame(), getConfig()) {
+			public AppDelegate(): base(new Stratofall(), getConfig()) {
 
 			}
 

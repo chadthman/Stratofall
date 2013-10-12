@@ -17,7 +17,8 @@ public class Stratofall implements ApplicationListener {
 	private Sprite sprite;
 	
 	@Override
-	public void create() {		
+	public void create() 
+	{		
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		

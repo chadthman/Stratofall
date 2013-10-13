@@ -2,7 +2,7 @@ package com.me.stratofall.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
@@ -14,11 +14,20 @@ public class GameScreen implements Screen
 	public OrthographicCamera camera;
 	
 	Texture playerImage;
+	Texture objectImage;
+	
 	Rectangle player;
 	
+	//Player physics
 	private final float VELOCITY_DX = .35f;
+	private final float VELOCITY_DY = .45f;
 	private final float MAX_VELOCITY_X = 15f;
+	private final float MAX_VELOCITY_Y = 15f;
 	private final float MOMENTUM = .025f;
+	
+	private final float STOP_DISTANCE = 500; //The furthest the player can be down the screen
+	
+	
 	private float accel_X = 0;
 	
 	
@@ -30,25 +39,29 @@ public class GameScreen implements Screen
 		playerImage = new Texture(Gdx.files.internal("test.png"));
 		
 		//load sounds
+		
 		//create the camera
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, game.WIDTH, game.HEIGHT);
 		
 		//create rectangles to logically represent the player and any game objects
 		player = new Rectangle();
-		player.x = 200;
-		player.y = 400;
+		player.x = game.WIDTH/2 - player.width/2;
+		player.y = 1180;
 		player.width = playerImage.getWidth();
 		player.height = playerImage.getHeight();
-		
 		
 	
 	}
 	@Override
 	public void render(float delta) 
 	{	
+		if(Gdx.input.isTouched())
+		{
+			game.setScreen(new MainMenuScreen(game));
+		}
 		Gdx.gl.glClearColor(0.9f, 0.9f, 0.9f, 0f);
-        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
         //update the camera
         camera.update();
@@ -89,7 +102,7 @@ public class GameScreen implements Screen
 		//Update momentum
 		float max_accel_x = Gdx.input.getAccelerometerX();
 		
-		//Calculate momentum
+		//Calculate momentum 
 		if(accel_X != max_accel_x)
 		{
 			if(max_accel_x < 0)
@@ -105,6 +118,12 @@ public class GameScreen implements Screen
 		player.x = player.x + (-accel_X  * MAX_VELOCITY_X * VELOCITY_DX);
 		
 		//System.out.println("accel_X: "+accel_X + " max_accel: "+max_accel_x);
+		
+		//Update falling
+		player.y = player.y - MAX_VELOCITY_Y * VELOCITY_DY;
+		if(player.y < STOP_DISTANCE)
+			player.y = STOP_DISTANCE;
+		
 		
 	}
 	@Override
@@ -138,7 +157,8 @@ public class GameScreen implements Screen
 	}
 
 	@Override
-	public void dispose() {
+	public void dispose() 
+	{
 		// TODO Auto-generated method stub
 
 	}

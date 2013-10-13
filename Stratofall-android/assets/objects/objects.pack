@@ -1,0 +1,19 @@
+
+objects.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+cloud
+  rotate: false
+  xy: 1, 0
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+plane
+  rotate: false
+  xy: 131, 16
+  size: 128, 48
+  orig: 128, 48
+  offset: 0, 0
+  index: -1

@@ -9,12 +9,12 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.me.stratofall.Stratofall;
 
@@ -27,7 +27,7 @@ public class MainMenuScreen implements Screen
 	private TextureAtlas atlas;
 	private Skin skin;
 	private Table table;
-	private TextButton buttonPlay, buttonExit;
+	private Button buttonPlay, buttonExit;
 	private BitmapFont white;
 	private Label heading; 
 	
@@ -83,20 +83,18 @@ public class MainMenuScreen implements Screen
 		white = new BitmapFont(Gdx.files.internal("fonts/white.fnt"), false);
 		
 		//creating buttons
-		TextButtonStyle textButtonStyleEXIT = new TextButtonStyle();
+		ButtonStyle textButtonStyleEXIT = new ButtonStyle();
 		textButtonStyleEXIT.up = skin.getDrawable("exit_button"); //button released
 		textButtonStyleEXIT.down = skin.getDrawable("exit_button"); //button pressed
-		textButtonStyleEXIT.fontColor = Color.BLACK;
-		textButtonStyleEXIT.font = white;
 		
-		TextButtonStyle textButtonStylePLAY = new TextButtonStyle();
+		ButtonStyle textButtonStylePLAY = new ButtonStyle();
 		textButtonStylePLAY.up = skin.getDrawable("play_button"); //button released
 		textButtonStylePLAY.down = skin.getDrawable("play_button"); //button pressed
 		textButtonStylePLAY.pressedOffsetY = -1; //move it 1 down when pressed
-		textButtonStylePLAY.fontColor = Color.BLACK; //color the font black
-		textButtonStylePLAY.font = white; //the white bitmap font we created, this probably isnt needed since the text is written on the image
+		//textButtonStylePLAY.fontColor = Color.BLACK; //color the font black
+		//textButtonStylePLAY.font = white; //the white bitmap font we created, this probably isnt needed since the text is written on the image
 		
-		buttonExit = new TextButton("", textButtonStyleEXIT);
+		buttonExit = new Button(textButtonStyleEXIT);
 		buttonExit.addListener(new ClickListener()
 		{
 			public void clicked(InputEvent event, float x, float y)
@@ -105,7 +103,7 @@ public class MainMenuScreen implements Screen
 			}
 		});
 		
-		buttonPlay = new TextButton("", textButtonStylePLAY);
+		buttonPlay = new Button(textButtonStylePLAY);
 		buttonPlay.addListener(new ClickListener()
 		{
 			public void clicked(InputEvent event, float x, float y)

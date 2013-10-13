@@ -11,8 +11,8 @@ public class Stratofall extends Game
 	public SpriteBatch batch;
 	public BitmapFont font;
 	
-	public final int WIDTH = 768;
-	public final int HEIGHT = 1280;
+	public static final int WIDTH = 768;
+	public static final int HEIGHT = 1280;
 	
 	
 	public void create() 

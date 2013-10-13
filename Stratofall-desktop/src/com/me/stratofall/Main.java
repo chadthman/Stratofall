@@ -8,8 +8,8 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "Stratofall";
 		cfg.useGL20 = false;
-		cfg.width = 480;
-		cfg.height = 320;
+		cfg.width = 768;
+		cfg.height = 1280;
 		
 		new LwjglApplication(new Stratofall(), cfg);
 	}

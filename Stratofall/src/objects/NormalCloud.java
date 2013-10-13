@@ -1,10 +1,17 @@
 package objects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.me.stratofall.Stratofall;
 
+/**
+ * 
+ * @author Shane
+ * The normal cloud class is just an image, has no effects. The player is able
+ * to pass though without consequince or gain.
+ */
 public class NormalCloud extends Cloud
 {
 	public NormalCloud()
@@ -14,7 +21,7 @@ public class NormalCloud extends Cloud
 		cloud = new Rectangle();
 		cloud.width = cloudImage.getRegionWidth();
 		cloud.height = cloudImage.getRegionHeight();
-		
+			
 		//give a random locaton on the x axis
 		cloud.x = random.nextInt(Stratofall.WIDTH) - (cloud.width)/2;
 		cloud.y = -cloud.height;
@@ -22,5 +29,6 @@ public class NormalCloud extends Cloud
 		//reset times
 		max_reset_time = 3 * 1000000000f; //3 seconds
 		min_reset_time = 0f; //immediately
+		setResetTime();
 	}
 }

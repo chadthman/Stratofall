@@ -10,9 +10,16 @@ cloud
   orig: 128, 64
   offset: 0, 0
   index: -1
+cloud_lightning
+  rotate: false
+  xy: 131, 0
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
 plane
   rotate: false
-  xy: 131, 16
+  xy: 261, 16
   size: 128, 48
   orig: 128, 48
   offset: 0, 0

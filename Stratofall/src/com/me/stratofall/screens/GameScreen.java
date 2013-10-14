@@ -17,8 +17,7 @@ import com.me.stratofall.Stratofall;
 /**
  * 
  * @author Shane
- * All game objects and HUD are drawn and displayed here. Collisions and game logic are also
- * calculated within this class
+ * All game objects and HUD are drawn and displayed here. 
  */
 		
 
@@ -111,7 +110,7 @@ public class GameScreen implements Screen
 		if(TimeUtils.nanoTime() - lastCloudSpawnTime > CLOUD_SPAWN_TIME)
 		{	
 			normal_clouds++;
-			Cloud c = new NormalCloud();
+			Cloud c = new NormalCloud(player); //reference player so upon collision, we can do stuff to player
 			clouds.add(c);
 			lastCloudSpawnTime = TimeUtils.nanoTime();
 		}
@@ -121,7 +120,7 @@ public class GameScreen implements Screen
 		if(TimeUtils.nanoTime() - lastLightningCloudSpawnTime > LIGHTNING_CLOUD_SPAWN_TIME)
 		{	
 			lightning_clouds++;
-			Cloud c = new LightningCloud();
+			Cloud c = new LightningCloud(player);
 			clouds.add(c);
 			lastLightningCloudSpawnTime = TimeUtils.nanoTime();
 		}

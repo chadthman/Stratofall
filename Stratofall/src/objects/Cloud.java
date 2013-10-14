@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.me.stratofall.Player;
 import com.me.stratofall.Stratofall;
 
 /**
@@ -27,6 +28,7 @@ import com.me.stratofall.Stratofall;
 
 public abstract class Cloud
 {
+	public Player player;
 	public TextureRegion cloudImage;
 	public Rectangle cloud;
 	public Random random = new Random();
@@ -52,6 +54,7 @@ public abstract class Cloud
 		gam.batch.end();
 		
 		update(); //update the cloud
+		checkCollisions(); //check for collisions and do stuff
 	}
 	
 	//custom set a clouds location
@@ -73,6 +76,7 @@ public abstract class Cloud
 	{
 		return cloud;
 	}
+	public abstract void checkCollisions();
 	public void update()
 	{
 		if(cloud.y < Stratofall.HEIGHT) //move the clouds up the screen while they are on it

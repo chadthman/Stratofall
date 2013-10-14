@@ -4,13 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
+import com.me.stratofall.Player;
 import com.me.stratofall.Stratofall;
 
 public class LightningCloud extends Cloud
 {
-	public LightningCloud()
+	public LightningCloud(Player p)
 	{
-		
+		player = p;
 		cloudImage = new TextureRegion(atlas.findRegion("cloud_lightning"));
 		cloud = new Rectangle();
 		cloud.width = cloudImage.getRegionWidth();
@@ -29,5 +30,11 @@ public class LightningCloud extends Cloud
 		setResetTime();
 		
 		VELOCITY_Y = 2.5f; //moves half the speed of a normal cloud
+	}
+
+	@Override
+	public void checkCollisions()
+	{
+		
 	}
 }

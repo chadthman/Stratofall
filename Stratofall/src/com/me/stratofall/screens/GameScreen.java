@@ -71,6 +71,7 @@ public class GameScreen implements Screen
 		if(Gdx.input.isTouched())
 		{
 			game.setScreen(new MainMenuScreen(game));
+			dispose(); //dispose of any running sounds
 		}
 		
 		Gdx.gl.glClearColor(0.9f, 0.9f, 0.9f, 0f);
@@ -122,6 +123,7 @@ public class GameScreen implements Screen
 			lightning_clouds++;
 			Cloud c = new LightningCloud(player);
 			clouds.add(c);
+			c.playSoundEffect(); //play the effect on spawn to notify player 
 			lastLightningCloudSpawnTime = TimeUtils.nanoTime();
 		}
 	}
@@ -159,8 +161,7 @@ public class GameScreen implements Screen
 	@Override
 	public void dispose() 
 	{
-		// TODO Auto-generated method stub
-
+		windMusic.dispose();
 	}
 
 }

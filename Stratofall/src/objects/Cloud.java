@@ -56,26 +56,6 @@ public abstract class Cloud
 		update(); //update the cloud
 		checkCollisions(); //check for collisions and do stuff
 	}
-	
-	//custom set a clouds location
-	public void setLocation(Vector2 v)
-	{
-		cloud.x = v.x;
-		cloud.y = v.y;
-	}
-	public void reset() //resets the cloud
-	{
-		playSoundEffect(); //when a cloud enters the screen. play the sound effect.
-		onScreen = true; //the cloud is back on the screen
-		cloud.x = random.nextInt(Stratofall.WIDTH) - (cloud.width)/2;
-		cloud.y = -cloud.height;
-		setResetTime();
-	}
-	//returns the clouds rectangle location
-	public Rectangle getLocation()
-	{
-		return cloud;
-	}
 	public abstract void checkCollisions();
 	public void update()
 	{
@@ -95,7 +75,6 @@ public abstract class Cloud
 			if(elapsedTime > reset_time) //reset the cloud
 			{
 				reset(); //reset the cloud
-				System.out.println("Elapsed: "+elapsedTime+" Reset: "+reset_time);
 			}
 		}
 	}
@@ -112,6 +91,25 @@ public abstract class Cloud
 	public Boolean onScreen()
 	{
 		return onScreen;
+	}	
+	//custom set a clouds location
+	public void setLocation(Vector2 v)
+	{
+		cloud.x = v.x;
+		cloud.y = v.y;
+	}
+	public void reset() //resets the cloud
+	{
+		playSoundEffect(); //when a cloud enters the screen. play the sound effect.
+		onScreen = true; //the cloud is back on the screen
+		cloud.x = random.nextInt(Stratofall.WIDTH) - (cloud.width)/2;
+		cloud.y = -cloud.height;
+		setResetTime();
+	}
+	//returns the clouds rectangle location
+	public Rectangle getLocation()
+	{
+		return cloud;
 	}
 }
 	

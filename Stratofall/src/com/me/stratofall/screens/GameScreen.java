@@ -9,6 +9,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.me.stratofall.Player;
@@ -28,9 +29,16 @@ public class GameScreen implements Screen
 	
 	private Player player;
 	private Music windMusic;
+	private Texture backgroundImage;
+	private Texture fogImage;
+	
+	private float background_y = -2560; //starting position
+	private float background_rate = .25f; //the rate at which the background progresses up the screen
+	private float fog_y = -2560; //starting position
+	private float fog_rate = .5f; //the rate at which the background progresses up the screen
 	
 	
-	private final int MAX_NORMAL_CLOUDS = 5;
+	private final int MAX_NORMAL_CLOUDS = 4;
 	private final int MAX_LIGHTNING_CLOUDS = 2; 
 	private final int TOTAL_CLOUDS = MAX_NORMAL_CLOUDS + MAX_LIGHTNING_CLOUDS;
 	
@@ -50,9 +58,11 @@ public class GameScreen implements Screen
 		game = gam;
 		
 		//load images
+		backgroundImage = Stratofall.assets.get("backgrounds/background.jpg", Texture.class);
+		fogImage = Stratofall.assets.get("backgrounds/background_fog.png", Texture.class);
 		
 		//load sounds (should be background noises, other sounds should be loaded within their respective classes)
-		windMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/background/background_wind.wav"));
+		windMusic = Stratofall.assets.get("sounds/background/background_wind.wav", Music.class);
 		windMusic.setLooping(true);
 		
 		//create the camera
@@ -60,7 +70,6 @@ public class GameScreen implements Screen
 		camera.setToOrtho(false, game.WIDTH, game.HEIGHT);
 		
 		player = new Player(game);
-		
 		
 	}
 
@@ -77,14 +86,26 @@ public class GameScreen implements Screen
 		Gdx.gl.glClearColor(0.9f, 0.9f, 0.9f, 0f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
+        //any gamescreen logic goes here. 
+        update();
+        
         //update the camera
         camera.update();
         
         //tell the Spritebatch to render in the coordinate system specified by the camera
         game.batch.setProjectionMatrix(camera.combined);
         
-        //begin a new batch and draw the player/objects
+        //begin a new batch and draw the player/objects 
+        game.batch.begin();
+        //draw the background
+        game.batch.draw(backgroundImage, 0, background_y);
+        game.batch.end();
         player.draw(delta);
+//        game.batch.begin();
+//        game.batch.draw(fogImage, 0, fog_y);
+//        game.batch.end();
+        
+        
         for (Cloud cloud : clouds)
 		{
 			cloud.draw(game);
@@ -95,17 +116,23 @@ public class GameScreen implements Screen
          * HUD
          * We will need a hud class to draw the scores/meters fallen and what not
          */
-        
-        //check if we should be spawning anything
+     
+
+	}
+	private void update()
+	{
+		//check if we should be spawning anything
         if(normal_clouds < MAX_NORMAL_CLOUDS)
         	spawnNormalCloud();
         if(lightning_clouds < MAX_LIGHTNING_CLOUDS)
         	spawnLightningCloud();
         
-        
-     
-
+        if(background_y < 0) //move the background
+        	background_y += background_rate;
+        if(fog_y < 0) //move the fog
+        	fog_y += fog_rate;
 	}
+
 	public void spawnNormalCloud()
 	{
 		if(TimeUtils.nanoTime() - lastCloudSpawnTime > CLOUD_SPAWN_TIME)

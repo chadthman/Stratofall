@@ -27,14 +27,14 @@ public class MainMenuScreen implements Screen
 	private TextureAtlas atlas;
 	private Skin skin;
 	private Table table;
-	private Button buttonPlay, buttonExit;
+	private Button buttonPlay, buttonExit, buttonHighScore;
 	private BitmapFont white;
 	private Label heading; 
 	
 
-	public MainMenuScreen(final Stratofall gam)
+	public MainMenuScreen(final Stratofall game)
 	{
-		game = gam;
+		this.game = game;
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, game.WIDTH, game.HEIGHT);
 
@@ -86,13 +86,18 @@ public class MainMenuScreen implements Screen
 		ButtonStyle textButtonStyleEXIT = new ButtonStyle();
 		textButtonStyleEXIT.up = skin.getDrawable("exit_button"); //button released
 		textButtonStyleEXIT.down = skin.getDrawable("exit_button"); //button pressed
-		
+
 		ButtonStyle textButtonStylePLAY = new ButtonStyle();
 		textButtonStylePLAY.up = skin.getDrawable("play_button"); //button released
 		textButtonStylePLAY.down = skin.getDrawable("play_button"); //button pressed
 		textButtonStylePLAY.pressedOffsetY = -1; //move it 1 down when pressed
 		//textButtonStylePLAY.fontColor = Color.BLACK; //color the font black
 		//textButtonStylePLAY.font = white; //the white bitmap font we created, this probably isnt needed since the text is written on the image
+		
+		//Button to High Score screen
+		ButtonStyle textButtonStyleHIGHSCORE = new ButtonStyle();
+		textButtonStyleHIGHSCORE.up = skin.getDrawable("high_score_button"); //button released
+		textButtonStyleHIGHSCORE.down = skin.getDrawable("high_score_button");//button pressed
 		
 		buttonExit = new Button(textButtonStyleEXIT);
 		buttonExit.addListener(new ClickListener()
@@ -113,6 +118,16 @@ public class MainMenuScreen implements Screen
 			}
 		});
 		
+		buttonHighScore = new Button(textButtonStyleHIGHSCORE);
+		buttonHighScore.addListener(new ClickListener()
+		{
+			public void clicked(InputEvent event, float x, float y)
+			{
+				game.setScreen(new HighscoreScreen(game));
+				dispose();
+			}
+		});
+		
 		//creating heading
 		LabelStyle headingStyle = new LabelStyle(white, Color.WHITE);
 		
@@ -120,11 +135,13 @@ public class MainMenuScreen implements Screen
 		heading.setFontScale(3f); //change the text size basically
 			
 		//putting stuff together
-		table.add(heading).padBottom(300); //adds a 300px margin below this cell and the next
+		table.add(heading).padBottom(150); //adds a 150px margin below this cell and the next
 		table.row();
 		table.add(buttonPlay); //contains our buttons
 		table.row(); //adds a row, now buttonExit is below buttonPlay
 		table.add(buttonExit);
+		table.row();
+		table.add(buttonHighScore);
 		table.debug(); //enables all the debug lines "red lines"
 		stage.addActor(table);
 		

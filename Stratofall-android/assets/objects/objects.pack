@@ -5,21 +5,21 @@ filter: Nearest,Nearest
 repeat: none
 cloud
   rotate: false
-  xy: 1, 0
-  size: 128, 64
-  orig: 128, 64
+  xy: 0, 0
+  size: 256, 165
+  orig: 256, 165
   offset: 0, 0
   index: -1
 cloud_lightning
   rotate: false
-  xy: 131, 0
-  size: 128, 64
-  orig: 128, 64
+  xy: 256, 0
+  size: 256, 165
+  orig: 256, 165
   offset: 0, 0
   index: -1
 plane
   rotate: false
-  xy: 261, 16
+  xy: 512, 117
   size: 128, 48
   orig: 128, 48
   offset: 0, 0

@@ -11,6 +11,7 @@ import com.me.stratofall.Stratofall;
 
 public class LightningCloud extends Cloud
 {
+	
 	public LightningCloud(Player p)
 	{
 		player = p;
@@ -38,6 +39,7 @@ public class LightningCloud extends Cloud
 	@Override
 	public void checkCollisions()
 	{
+		
 		if(getLocation().overlaps(player.getLocation())) //if collides with player
 		{
 			//player.setLocation(new Vector2(player.getLocation().x, 1100)); //visible collision check

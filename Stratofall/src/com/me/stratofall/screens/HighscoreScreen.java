@@ -12,12 +12,15 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.me.stratofall.Stratofall;
 
 public class HighscoreScreen implements Screen {
@@ -28,9 +31,10 @@ public class HighscoreScreen implements Screen {
 	private Stage stage;
 	private TextureAtlas atlas;
 	private Skin skin;
-	private Table table;
+	private Table outterTable, innerTable;
+	private Button buttonBack;
 	private BitmapFont white;
-	private Label heading, scoreText;
+	private Label topHeading, subLabelHeading, playerScore, playerName, playerDistance;
 	
 //	Preferences prefs = Gdx.app.getPreferences("my-preferences");
 	
@@ -82,29 +86,76 @@ public class HighscoreScreen implements Screen {
 		
 		atlas = new TextureAtlas("ui/button.pack");
 		skin = new Skin(atlas);
-		table = new Table(skin);
-		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		outterTable = new Table(skin);
+		outterTable.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		innerTable = new Table(skin);
+		innerTable.setBounds(0, 0, outterTable.getMaxWidth(), outterTable.getHeight());
 		
 		//create font
 		white = new BitmapFont(Gdx.files.internal("fonts/white.fnt"), false);
 		
 		LabelStyle headingStyle = new LabelStyle(white, Color.WHITE);
 		
-		heading = new Label("High Scores", headingStyle);
-		heading.setFontScale(3f); //change the text size basically
+		topHeading = new Label("High Scores", headingStyle);
+		topHeading.setFontScale(3f); //change the text size basically
 		
-		table.add(heading).padBottom(150); //adds a 150px margin below this cell and the next
-		table.row();
+		outterTable.add(topHeading).padBottom(150); //adds a 150px margin below this cell and the next
+		outterTable.row();
+		
+		//Labels the categories of the score fields
+		subLabelHeading = new Label("Player Name", headingStyle);
+		subLabelHeading.setScale(2f);
+		innerTable.add(subLabelHeading);
+		subLabelHeading = new Label("Distance", headingStyle);
+		innerTable.add(subLabelHeading);
+		subLabelHeading = new Label("Score", headingStyle);
+		innerTable.add(subLabelHeading);
+		innerTable.row();
 		
 		ArrayList<Score> scores = getHighScores();
 		
+		//Prints out the scores of the players
 		for (Score score : scores)
 		{
-			scoreText = new Label(score.getName() + "\t" + score.getDistance() + "\t" + score.getScore(), headingStyle);
-			scoreText.setScale(2f);
-			table.add(scoreText);
-			table.row();
+			playerName = new Label(score.getName(), headingStyle);
+			playerName.setScale(2f);
+			innerTable.add(playerName);
+			
+			playerDistance = new Label(score.getDistance() + "", headingStyle);
+			playerDistance.setScale(2f);
+			innerTable.add(playerDistance);
+			
+			playerScore = new Label(score.getScore() + "" , headingStyle);
+			playerScore.setScale(2f);
+			innerTable.add(playerScore);
+			
+			innerTable.row();
 		}
+		//Just for debugging
+		outterTable.debug();
+		innerTable.debug();
+		
+		outterTable.add(innerTable); //add the innertable to the outertable
+		outterTable.row();
+		
+		//creating buttons
+		ButtonStyle textButtonStyleBACK = new ButtonStyle();
+		textButtonStyleBACK.up = skin.getDrawable("back_to_main_menu_button"); //button released
+		textButtonStyleBACK.down = skin.getDrawable("back_to_main_menu_button"); //button pressed
+		
+		buttonBack = new Button(textButtonStyleBACK);
+		buttonBack.addListener(new ClickListener()
+		{
+			public void clicked(InputEvent event, float x, float y)
+			{
+				game.setScreen(new MainMenuScreen(game));
+			}
+		});
+		
+		outterTable.add(buttonBack).padTop(150); //contains our button
+		
+		stage.addActor(outterTable);
 		
 	}
 

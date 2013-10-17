@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
@@ -46,10 +47,14 @@ public abstract class Cloud
 	
 	private boolean onScreen = true;
 	
+	public ParticleEffect effect;
 	
-	public void draw(Stratofall gam)
+	public void draw(Stratofall gam,float delta)
 	{	
 		gam.batch.begin();
+		if(effect != null)
+			effect.draw(gam.batch, delta);
+		
 		gam.batch.draw(cloudImage, cloud.x, cloud.y);
 		gam.batch.end();
 		
@@ -58,7 +63,8 @@ public abstract class Cloud
 	}
 	public abstract void checkCollisions();
 	public void update()
-	{
+	{	
+		
 		if(cloud.y < Stratofall.HEIGHT) //move the clouds up the screen while they are on it
 			cloud.y += VELOCITY_Y;
 		
@@ -69,6 +75,8 @@ public abstract class Cloud
 		if(cloud.y >= Stratofall.HEIGHT)
 		{
 			onScreen = false; //no longer on screen
+			effect.allowCompletion(); //stop the effect
+			
 			float elapsedTime = (System.nanoTime()- lastTimeOnScreen);
 			
 			
@@ -77,6 +85,9 @@ public abstract class Cloud
 				reset(); //reset the cloud
 			}
 		}
+		
+		if(effect != null)
+			effect.setPosition(cloud.x + cloud.width/2, cloud.y + cloud.height/2); //emitt from the center of the cloud
 	}
 	public void setResetTime() //the clouds next reset time is randomized
 	{
@@ -104,6 +115,7 @@ public abstract class Cloud
 		onScreen = true; //the cloud is back on the screen
 		cloud.x = random.nextInt(Stratofall.WIDTH) - (cloud.width)/2;
 		cloud.y = -cloud.height;
+		effect.reset(); //start the effect again
 		setResetTime();
 	}
 	//returns the clouds rectangle location

@@ -1,5 +1,6 @@
 package com.me.stratofall.screens;
 
+import hud.GameHud;
 import objects.Cloud;
 import objects.LightningCloud;
 import objects.NormalCloud;
@@ -33,6 +34,7 @@ public class GameScreen implements Screen
 	private Texture backgroundImage;
 	private Texture fogImage;
 	private ScrollingLayer fogLayer;
+	private GameHud hud;
 	
 	private float background_y = -2560; //starting position
 	private float background_rate = .25f; //the rate at which the background progresses up the screen
@@ -59,6 +61,7 @@ public class GameScreen implements Screen
 	{
 		game = gam;
 		
+		
 		//load images
 		backgroundImage = Stratofall.assets.get("backgrounds/background.jpg", Texture.class);
 		fogImage = Stratofall.assets.get("backgrounds/background_fog.png", Texture.class);
@@ -73,7 +76,7 @@ public class GameScreen implements Screen
 		camera.setToOrtho(false, game.WIDTH, game.HEIGHT);
 		
 		player = new Player(game);
-		
+		hud = new GameHud(player); //create a new instance of hud referencing player
 	}
 
 	@Override
@@ -106,10 +109,8 @@ public class GameScreen implements Screen
         player.draw(delta);
         
        // fogLayer.draw(game);
-        game.batch.begin();
-        //game.batch.draw(fogImage, 0, fog_y);
-        game.batch.end();
-        
+   
+        hud.draw(game.batch, delta);
         
         for (Cloud cloud : clouds)
 		{

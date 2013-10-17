@@ -51,7 +51,7 @@ public class HighscoreScreen implements Screen {
 		ArrayList<Score> scores = new ArrayList<Score>();
 		//Junk data for now
 		scores.add(new Score("Chad", 10000, 2011));
-		scores.add(new Score("Shane", 2, 15));
+		scores.add(new Score("Shane", 90001, 15));
 		
 		return scores;
 	}

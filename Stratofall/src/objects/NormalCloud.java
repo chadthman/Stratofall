@@ -35,7 +35,10 @@ public class NormalCloud extends Cloud
 	@Override
 	public void checkCollisions()
 	{
-		// TODO Auto-generated method stub
-		
+		if(getLocation().overlaps(player.getCollisionLocation()) && !hasCollided)
+		{
+			hasCollided = true;
+			player.setFallRate(.25f, .025f); //slows the player down to a speed of .25f at a rate of .025f per update.
+		}
 	}
 }

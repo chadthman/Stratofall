@@ -38,6 +38,7 @@ public class Stratofall extends Game
 		
 		assets.load("backgrounds/background_fog.png", Texture.class);
 		assets.load("backgrounds/background.jpg", Texture.class);
+		assets.load("hud/life.png", Texture.class);
 		//assets.load("objects/objects.png", TextureRegion.class); dont load texture regions for atlas. 
 		assets.load("player.png", Texture.class);
 		assets.load("playerSpriteSheet.png", Texture.class);

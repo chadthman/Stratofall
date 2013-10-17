@@ -35,6 +35,8 @@ public abstract class Cloud
 	public Random random = new Random();
 	public Sound effectSound;
 	
+	public boolean hasCollided = false;
+	
 	public float max_reset_time; //each cloud should have a different time before its reset and put back on the screen
 	public float min_reset_time; //the min time a cloud will wait before resetting
 	public float reset_time; //the actual reset time, calulated by randomly by the max/min times
@@ -66,7 +68,7 @@ public abstract class Cloud
 	{	
 		
 		if(cloud.y < Stratofall.HEIGHT) //move the clouds up the screen while they are on it
-			cloud.y += VELOCITY_Y;
+			cloud.y += VELOCITY_Y * player.getFallRate();
 		
 		if(onScreen)
 			lastTimeOnScreen = TimeUtils.nanoTime(); //get the last time the cloud was on the screen
@@ -115,6 +117,7 @@ public abstract class Cloud
 	{
 		playSoundEffect(); //when a cloud enters the screen. play the sound effect.
 		onScreen = true; //the cloud is back on the screen
+		hasCollided = false; //you can now collide with this cloud again
 		cloud.x = random.nextInt(Stratofall.WIDTH) - (cloud.width)/2;
 		cloud.y = -cloud.height;
 		

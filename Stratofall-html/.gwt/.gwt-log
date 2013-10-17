@@ -34,6 +34,7 @@ Public resources found in...
 Translatable source found in...
 Found 0 cached/archived units.  Used 0 / 2729 units from cache.
 Compiling...
+<<<<<<< HEAD
    20% complete (ETR: 18 seconds)
    20% complete (ETR: 18 seconds)
    20% complete (ETR: 18 seconds)
@@ -46,6 +47,20 @@ Compiling...
    90% complete (ETR: 1 seconds)
    100% complete (ETR: 0 seconds)
    Compilation completed in 12.56 seconds
+=======
+   0% complete (ETR: 74 seconds)
+   10% complete (ETR: 69 seconds)
+   20% complete (ETR: 55 seconds)
+   30% complete (ETR: 49 seconds)
+   40% complete (ETR: 36 seconds)
+   50% complete (ETR: 28 seconds)
+   60% complete (ETR: 20 seconds)
+   70% complete (ETR: 14 seconds)
+   80% complete (ETR: 9 seconds)
+   90% complete (ETR: 4 seconds)
+   100% complete (ETR: 0 seconds)
+   Compilation completed in 47.04 seconds
+>>>>>>> 85753e1268beba5402fd8440d0d70f05e2040eba
 Removing invalidated units
 Finding entry point classes
 Public resources found in...
@@ -59,6 +74,10 @@ Public resources found in...
 Translatable source found in...
 Found 2729 cached/archived units.  Used 2729 / 2729 units from cache.
 Compiling...
+<<<<<<< HEAD
    Compilation completed in 0.00 seconds
+=======
+   Compilation completed in 0.01 seconds
+>>>>>>> 85753e1268beba5402fd8440d0d70f05e2040eba
 Removing invalidated units
 Finding entry point classes

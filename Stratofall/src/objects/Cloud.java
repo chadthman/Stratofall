@@ -75,7 +75,9 @@ public abstract class Cloud
 		if(cloud.y >= Stratofall.HEIGHT)
 		{
 			onScreen = false; //no longer on screen
-			effect.allowCompletion(); //stop the effect
+			
+			if(effect != null) //if the cloud has an effect
+				effect.allowCompletion(); //stop the effect
 			
 			float elapsedTime = (System.nanoTime()- lastTimeOnScreen);
 			
@@ -115,7 +117,9 @@ public abstract class Cloud
 		onScreen = true; //the cloud is back on the screen
 		cloud.x = random.nextInt(Stratofall.WIDTH) - (cloud.width)/2;
 		cloud.y = -cloud.height;
-		effect.reset(); //start the effect again
+		
+		if(effect != null) //if the cloud has an effect
+			effect.reset(); //start the effect again
 		setResetTime();
 	}
 	//returns the clouds rectangle location

@@ -1,0 +1,26 @@
+
+objects.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+cloud
+  rotate: false
+  xy: 0, 0
+  size: 256, 165
+  orig: 256, 165
+  offset: 0, 0
+  index: -1
+cloud_lightning
+  rotate: false
+  xy: 256, 0
+  size: 256, 165
+  orig: 256, 165
+  offset: 0, 0
+  index: -1
+plane
+  rotate: false
+  xy: 512, 117
+  size: 128, 48
+  orig: 128, 48
+  offset: 0, 0
+  index: -1

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import objects.Score;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -45,7 +44,7 @@ public class HighscoreScreen implements Screen {
 		camera.setToOrtho(false, game.WIDTH, game.HEIGHT);
 	}
 	
-	public ArrayList<Score> getHighScores()
+	private ArrayList<Score> getHighScores()
 	{
 		//TODO logic for getting the stored highscores probably on some xml or json file
 		ArrayList<Score> scores = new ArrayList<Score>();

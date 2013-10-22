@@ -8,13 +8,13 @@ public class Score {
 	private int score;
 	private String name;
 
-	public Score (String name, int score, int distance)
+	public Score (String name, int score, int distance) //for test purposes at the momnent
 	{
 		this.name = name;
 		this.score = score;
 		this.distance = distance;
 	}
-	
+
 	public void setScore(int score)
 	{
 		this.score = score;

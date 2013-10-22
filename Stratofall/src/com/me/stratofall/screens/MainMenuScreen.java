@@ -172,7 +172,8 @@ public class MainMenuScreen implements Screen
 	@Override
 	public void dispose()
 	{
-		// TODO Auto-generated method stub
+		Gdx.input.setInputProcessor(null);
+		stage.dispose();
 	}
 
 }

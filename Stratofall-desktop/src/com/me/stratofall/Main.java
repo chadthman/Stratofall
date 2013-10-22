@@ -12,6 +12,7 @@ public class Main
 		cfg.useGL20 = true;
 		cfg.width = 768;
 		cfg.height = 1280;
+		cfg.resizable = false; //So that it doesn't resize on smaller screens.
 
 		new LwjglApplication(new Stratofall(), cfg);
 	}

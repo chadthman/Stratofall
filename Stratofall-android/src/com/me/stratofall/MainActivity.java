@@ -1,6 +1,7 @@
 package com.me.stratofall;
 
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.WindowManager;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
@@ -10,7 +11,7 @@ public class MainActivity extends AndroidApplication
 {
 	@Override
 	public void onCreate(Bundle savedInstanceState)
-	{
+	{ 
 		super.onCreate(savedInstanceState);
 
 		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();

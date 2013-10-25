@@ -1,17 +1,17 @@
-cloud_puff
+coin_trail
 - Delay -
 active: false
 - Duration - 
-lowMin: 100.0
-lowMax: 100.0
+lowMin: 150.0
+lowMax: 150.0
 - Count - 
 min: 0
-max: 50
+max: 5
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 250.0
-highMax: 400.0
+highMin: 5.0
+highMax: 50.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -20,8 +20,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 500.0
-highMax: 1500.0
+highMin: 250.0
+highMax: 500.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -44,8 +44,8 @@ side: both
 - Spawn Width - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 245.0
-highMax: 245.0
+highMin: 32.0
+highMax: 32.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -64,8 +64,8 @@ timeline0: 0.0
 - Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 2.0
-highMax: 8.0
+highMin: 4.0
+highMax: 6.0
 relative: false
 scalingCount: 3
 scaling0: 0.64705884
@@ -93,12 +93,14 @@ lowMax: 75.0
 highMin: -90.0
 highMax: -90.0
 relative: false
-scalingCount: 2
+scalingCount: 3
 scaling0: 1.0
 scaling1: 1.0
-timelineCount: 2
+scaling2: 1.0
+timelineCount: 3
 timeline0: 0.0
-timeline1: 1.0
+timeline1: 0.33561644
+timeline2: 1.0
 - Rotation - 
 active: true
 lowMin: 0.0
@@ -117,22 +119,24 @@ lowMax: 0.0
 highMin: 0.0
 highMax: 0.0
 relative: false
-scalingCount: 2
+scalingCount: 3
 scaling0: 1.0
 scaling1: 1.0
-timelineCount: 2
+scaling2: 1.0
+timelineCount: 3
 timeline0: 0.0
-timeline1: 1.0
+timeline1: 0.5753425
+timeline2: 1.0
 - Gravity - 
 active: false
 - Tint - 
 colorsCount: 6
-colors0: 0.43137255
-colors1: 0.7019608
-colors2: 1.0
-colors3: 0.4
-colors4: 0.4
-colors5: 0.4
+colors0: 1.0
+colors1: 0.79607844
+colors2: 0.0
+colors3: 1.0
+colors4: 0.99607843
+colors5: 0.0
 timelineCount: 2
 timeline0: 0.0
 timeline1: 1.0

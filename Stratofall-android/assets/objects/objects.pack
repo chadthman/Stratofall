@@ -31,3 +31,10 @@ coin
   orig: 64, 64
   offset: 0, 0
   index: -1
+coin_blue
+  rotate: false
+  xy: 768, 37
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1

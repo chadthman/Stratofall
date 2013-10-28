@@ -24,16 +24,30 @@ cloud2
   orig: 256, 161
   offset: 0, 0
   index: -1
-coin
+balloon_blue
   rotate: false
   xy: 768, 101
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-coin_blue
+balloon_red
   rotate: false
   xy: 768, 37
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+coin
+  rotate: false
+  xy: 832, 101
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+coin_blue
+  rotate: false
+  xy: 832, 37
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

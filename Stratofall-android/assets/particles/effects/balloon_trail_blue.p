@@ -1,4 +1,4 @@
-coin_trail_blue
+balloon_trail_blue
 - Delay -
 active: false
 - Duration - 

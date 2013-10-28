@@ -1,4 +1,4 @@
-coin_ring
+balloon_ring_blue
 - Delay -
 active: false
 - Duration - 
@@ -112,9 +112,9 @@ active: false
 active: false
 - Tint - 
 colorsCount: 3
-colors0: 1.0
-colors1: 0.9254902
-colors2: 0.0
+colors0: 0.0
+colors1: 0.62352943
+colors2: 1.0
 timelineCount: 1
 timeline0: 0.0
 - Transparency - 
@@ -140,4 +140,4 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-circle.png
+C:\Users\Shane\Dropbox\Independent Study\particles\circle.png

@@ -1,7 +1,6 @@
 package com.me.stratofall;
 
 import android.os.Bundle;
-import android.os.Debug;
 import android.view.WindowManager;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
@@ -19,7 +18,6 @@ public class MainActivity extends AndroidApplication
 		cfg.useGL20 = true;
 		cfg.useCompass = false;
 		cfg.useAccelerometer = true;
-
 		initialize(new Stratofall(), cfg);
 	}
 }

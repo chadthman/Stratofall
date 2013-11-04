@@ -10,8 +10,8 @@ max: 50
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 5.0
-highMax: 15.0
+highMin: 10.0
+highMax: 10.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -103,22 +103,22 @@ active: false
 active: false
 - Tint - 
 colorsCount: 12
-colors0: 1.0
-colors1: 1.0
-colors2: 1.0
-colors3: 1.0
-colors4: 0.6
-colors5: 0.0
-colors6: 1.0
-colors7: 1.0
-colors8: 1.0
-colors9: 0.6039216
-colors10: 1.0
+colors0: 0.63529414
+colors1: 0.35686275
+colors2: 0.0
+colors3: 0.13333334
+colors4: 0.13333334
+colors5: 0.13333334
+colors6: 0.21960784
+colors7: 0.21960784
+colors8: 0.21960784
+colors9: 0.54901963
+colors10: 0.32941177
 colors11: 0.0
 timelineCount: 4
 timeline0: 0.0
-timeline1: 0.34846374
-timeline2: 0.35846373
+timeline1: 0.35283992
+timeline2: 0.58003443
 timeline3: 1.0
 - Transparency - 
 lowMin: 0.0

@@ -9,6 +9,10 @@
 	<classpathentry kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
 	<classpathentry kind="lib" path="libs/box2dlights-sources.jar"/>
 	<classpathentry kind="lib" path="libs/box2dlights.jar"/>
+	<classpathentry kind="lib" path="libs/tween-engine-api-6.3.3-source.jar"/>
+	<classpathentry kind="lib" path="libs/tween-engine-api-6.3.3.jar"/>
+	<classpathentry kind="lib" path="libs/gdx-freetype-natives.jar"/>
+	<classpathentry kind="lib" path="libs/gdx-freetype.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Shane/Documents/Programming/Android/adt-bundle-windows-x86_64-20130917/sdk/"/>

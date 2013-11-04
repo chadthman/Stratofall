@@ -1,7 +1,5 @@
 package com.me.stratofall;
 
-import org.lwjgl.opengl.Display;
-
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 

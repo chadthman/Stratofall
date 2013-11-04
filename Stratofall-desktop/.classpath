@@ -10,5 +10,9 @@
 	<classpathentry kind="lib" path="libs/gdx-backend-lwjgl-sources.jar"/>
 	<classpathentry kind="lib" path="/Stratofall/libs/gdx-sources.jar"/>
 	<classpathentry kind="lib" path="/Stratofall/libs/gdx.jar" sourcepath="/Stratofall/libs/gdx-sources.jar"/>
+	<classpathentry kind="lib" path="libs/tween-engine-api-6.3.3-source.jar"/>
+	<classpathentry kind="lib" path="libs/tween-engine-api-6.3.3.jar"/>
+	<classpathentry kind="lib" path="libs/gdx-freetype-natives.jar"/>
+	<classpathentry kind="lib" path="libs/gdx-freetype.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

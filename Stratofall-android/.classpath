@@ -11,7 +11,6 @@
 	<classpathentry kind="lib" path="libs/box2dlights.jar"/>
 	<classpathentry kind="lib" path="libs/tween-engine-api-6.3.3-source.jar"/>
 	<classpathentry kind="lib" path="libs/tween-engine-api-6.3.3.jar"/>
-	<classpathentry kind="lib" path="libs/gdx-freetype-natives.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-freetype.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES">
 		<attributes>

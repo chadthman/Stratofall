@@ -1,4 +1,4 @@
-balloon_trail_blue
+coin_trail_blue
 - Delay -
 active: false
 - Duration - 
@@ -21,7 +21,7 @@ timeline0: 0.0
 lowMin: 0.0
 lowMax: 0.0
 highMin: 250.0
-highMax: 500.0
+highMax: 750.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -65,7 +65,7 @@ timeline0: 0.0
 lowMin: 0.0
 lowMax: 0.0
 highMin: 4.0
-highMax: 6.0
+highMax: 24.0
 relative: false
 scalingCount: 3
 scaling0: 0.64705884
@@ -132,7 +132,7 @@ active: false
 - Tint - 
 colorsCount: 6
 colors0: 0.0
-colors1: 0.9647059
+colors1: 0.96862745
 colors2: 1.0
 colors3: 0.0
 colors4: 0.0627451

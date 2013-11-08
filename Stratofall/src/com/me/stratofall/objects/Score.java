@@ -1,6 +1,6 @@
 package com.me.stratofall.objects;
 
-public class Score {
+public class Score implements Comparable<Score> {
 	
 	//The score of the person for each game.
 	
@@ -8,7 +8,7 @@ public class Score {
 	private int score;
 	private String name;
 
-	public Score (String name, int score, int distance) //for test purposes at the momnent
+	public Score (String name, int distance, int score) //for test purposes at the momnent
 	{
 		this.name = name;
 		this.score = score;
@@ -43,6 +43,11 @@ public class Score {
 	public int getDistance()
 	{
 		return distance;
+	}
+
+	@Override
+	public int compareTo(Score score) {
+		return score.getScore() - this.score;
 	}
 
 }

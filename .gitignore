@@ -3,6 +3,7 @@ nightly/libs
 bitz/data/*
 
 ignore/*
+Stratofall-desktop/data/*
 
 .DS_Store
 */.DS_Store

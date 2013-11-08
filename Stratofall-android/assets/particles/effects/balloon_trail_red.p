@@ -21,7 +21,7 @@ timeline0: 0.0
 lowMin: 0.0
 lowMax: 0.0
 highMin: 250.0
-highMax: 500.0
+highMax: 750.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -65,7 +65,7 @@ timeline0: 0.0
 lowMin: 0.0
 lowMax: 0.0
 highMin: 4.0
-highMax: 6.0
+highMax: 24.0
 relative: false
 scalingCount: 3
 scaling0: 0.64705884

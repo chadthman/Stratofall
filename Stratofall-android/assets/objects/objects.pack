@@ -38,16 +38,9 @@ balloon_red
   orig: 64, 64
   offset: 0, 0
   index: -1
-coin
+balloon_yellow
   rotate: false
   xy: 832, 101
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-coin_blue
-  rotate: false
-  xy: 832, 37
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

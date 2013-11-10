@@ -1,6 +1,7 @@
 package com.me.stratofall;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
@@ -18,6 +19,8 @@ public class MainActivity extends AndroidApplication
 		cfg.useGL20 = true;
 		cfg.useCompass = false;
 		cfg.useAccelerometer = true;
+//		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//		getWindow().addFlags(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
 		initialize(new Stratofall(), cfg);
 	}
 }

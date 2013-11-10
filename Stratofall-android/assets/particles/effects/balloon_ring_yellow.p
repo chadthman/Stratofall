@@ -1,4 +1,4 @@
-balloon_ring_blue
+balloon_ring_yellow
 - Delay -
 active: false
 - Duration - 
@@ -112,9 +112,9 @@ active: false
 active: false
 - Tint - 
 colorsCount: 3
-colors0: 0.07058824
-colors1: 0.65882355
-colors2: 1.0
+colors0: 1.0
+colors1: 0.9137255
+colors2: 0.0
 timelineCount: 1
 timeline0: 0.0
 - Transparency - 
@@ -155,8 +155,8 @@ max: 1
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 50.0
-highMax: 50.0
+highMin: 1.0
+highMax: 1.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -175,27 +175,9 @@ timeline0: 0.0
 - Life Offset - 
 active: false
 - X Offset - 
-active: true
-lowMin: 4.0
-lowMax: 4.0
-highMin: 0.0
-highMax: 0.0
-relative: false
-scalingCount: 1
-scaling0: 1.0
-timelineCount: 1
-timeline0: 0.0
+active: false
 - Y Offset - 
-active: true
-lowMin: -10.0
-lowMax: -10.0
-highMin: 0.0
-highMax: 0.0
-relative: false
-scalingCount: 1
-scaling0: 1.0
-timelineCount: 1
-timeline0: 0.0
+active: false
 - Spawn Shape - 
 shape: point
 - Spawn Width - 
@@ -241,8 +223,8 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 75.0
-lowMax: 75.0
+lowMin: 0.0
+lowMax: 0.0
 highMin: 90.0
 highMax: 90.0
 relative: false
@@ -251,30 +233,19 @@ scaling0: 1.0
 timelineCount: 1
 timeline0: 0.0
 - Rotation - 
-active: true
-lowMin: 0.0
-lowMax: 0.0
-highMin: 0.0
-highMax: 0.0
-relative: false
-scalingCount: 2
-scaling0: 1.0
-scaling1: 1.0
-timelineCount: 2
-timeline0: 0.0
-timeline1: 1.0
+active: false
 - Wind - 
 active: false
 - Gravity - 
 active: false
 - Tint - 
 colorsCount: 6
-colors0: 0.023529412
-colors1: 0.67058825
-colors2: 1.0
-colors3: 0.8509804
-colors4: 0.972549
-colors5: 1.0
+colors0: 1.0
+colors1: 0.85882354
+colors2: 0.047058824
+colors3: 1.0
+colors4: 0.9843137
+colors5: 0.827451
 timelineCount: 2
 timeline0: 0.0
 timeline1: 1.0
@@ -285,14 +256,14 @@ highMin: 1.0
 highMax: 1.0
 relative: false
 scalingCount: 4
-scaling0: 0.49122807
+scaling0: 0.48876405
 scaling1: 1.0
-scaling2: 0.9298246
+scaling2: 0.89325845
 scaling3: 0.0
 timelineCount: 4
 timeline0: 0.0
-timeline1: 0.16438356
-timeline2: 0.65753424
+timeline1: 0.18773946
+timeline2: 0.6570881
 timeline3: 1.0
 - Options - 
 attached: false
@@ -301,4 +272,4 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-five.png
+ten.png

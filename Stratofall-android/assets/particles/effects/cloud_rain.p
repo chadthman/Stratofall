@@ -1,4 +1,4 @@
-cloud_puff
+cloud_rain
 - Delay -
 active: true
 lowMin: 0.0

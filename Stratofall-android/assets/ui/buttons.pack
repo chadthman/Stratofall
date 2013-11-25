@@ -5,26 +5,40 @@ filter: Nearest,Nearest
 repeat: none
 back
   rotate: false
-  xy: 0, 600
+  xy: 0, 750
   size: 400, 150
   orig: 400, 150
   offset: 0, 0
   index: -1
 back_pressed
   rotate: false
-  xy: 0, 450
+  xy: 0, 600
   size: 400, 150
   orig: 400, 150
   offset: 0, 0
   index: -1
 continue
   rotate: false
-  xy: 400, 600
+  xy: 400, 750
   size: 400, 150
   orig: 400, 150
   offset: 0, 0
   index: -1
 continue_pressed
+  rotate: false
+  xy: 0, 450
+  size: 400, 150
+  orig: 400, 150
+  offset: 0, 0
+  index: -1
+credits
+  rotate: false
+  xy: 400, 600
+  size: 400, 150
+  orig: 400, 150
+  offset: 0, 0
+  index: -1
+credits_pressed
   rotate: false
   xy: 0, 300
   size: 400, 150
@@ -71,5 +85,12 @@ quit_pressed
   xy: 400, 0
   size: 400, 150
   orig: 400, 150
+  offset: 0, 0
+  index: -1
+textfield
+  rotate: false
+  xy: 800, 836
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1

@@ -3,44 +3,44 @@ objects.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-cloud_lightning
-  rotate: false
-  xy: 0, 0
-  size: 256, 165
-  orig: 256, 165
-  offset: 0, 0
-  index: -1
 cloud
   rotate: false
-  xy: 256, 4
+  xy: 0, 0
   size: 256, 161
   orig: 256, 161
   offset: 0, 0
   index: -1
 cloud2
   rotate: false
-  xy: 512, 4
+  xy: 256, 0
+  size: 256, 161
+  orig: 256, 161
+  offset: 0, 0
+  index: -1
+cloud_lightning
+  rotate: false
+  xy: 512, 0
   size: 256, 161
   orig: 256, 161
   offset: 0, 0
   index: -1
 balloon_blue
   rotate: false
-  xy: 768, 101
+  xy: 768, 97
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 balloon_red
   rotate: false
-  xy: 768, 37
+  xy: 768, 33
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 balloon_yellow
   rotate: false
-  xy: 832, 101
+  xy: 832, 97
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

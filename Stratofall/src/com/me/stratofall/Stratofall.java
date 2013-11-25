@@ -24,7 +24,7 @@ public class Stratofall extends Game
 	
 	public static AssetManager assets = new AssetManager();
 
-
+	public static final String VERSION = "1.0.0";
 	
 	@Override
 	public void create() 
@@ -87,6 +87,7 @@ public class Stratofall extends Game
 //			System.out.println("Loading... "+progress*100+"%");
 //		}
 	}
+	
 	@Override
 	public void dispose()
 	{

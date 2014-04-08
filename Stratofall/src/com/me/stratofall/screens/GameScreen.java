@@ -17,7 +17,11 @@ import com.me.stratofall.hud.GameHud;
 import com.me.stratofall.objects.balloons.BalloonManager;
 import com.me.stratofall.objects.balloons.BalloonPattern;
 import com.me.stratofall.objects.clouds.CloudManager;
+import com.me.stratofall.utils.DifficultyManager;
 import com.me.stratofall.utils.ScrollingLayer;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 /**
  * 
@@ -49,6 +53,8 @@ public class GameScreen implements Screen
 	private CloudManager cloudManager2;
 	private BalloonManager balloonManager;
 	private BalloonPattern balloonPattern, balloonPattern2;
+	private DifficultyManager difficulty;
+	private Viewport viewport;
 
 	public GameScreen()
 	{
@@ -63,7 +69,7 @@ public class GameScreen implements Screen
 
 		// load sounds (should be background noises, other sounds should be
 		// loaded within their respective classes)
-		gameMusic = Stratofall.assets.get("sounds/background/game_music.ogg",
+		gameMusic = Stratofall.assets.get("sounds/background/game_music.mp3",
 				Music.class);
 		gameMusic.setLooping(true);
 
@@ -78,8 +84,13 @@ public class GameScreen implements Screen
 																				// the
 																				// bottom
 		dustEffect.start();
-
-		stage = new Stage(Stratofall.WIDTH, Stratofall.HEIGHT);
+		
+		stage = new Stage(new StretchViewport(Stratofall.WIDTH, Stratofall.HEIGHT));
+		//stage = new Stage(Stratofall.WIDTH, Stratofall.HEIGHT);
+//		stage = new Stage();
+//		viewport = new FitViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
+//		stage.setViewport(viewport);
+		
 		Gdx.input.setInputProcessor(stage);
 
 		cloudGroup = new Group();
@@ -89,9 +100,9 @@ public class GameScreen implements Screen
 		
 		cloudManager2 = new CloudManager(cloudGroup2, player);
 		cloudManager = new CloudManager(cloudGroup, player);
-			cloudManager.setMaxNormalClouds(6);
-			cloudManager.setMaxLightningClouds(2);
-			cloudManager2.setMaxNormalClouds(6);
+			cloudManager.setMaxNormalClouds(10);
+			cloudManager.setMaxLightningClouds(0);
+			cloudManager2.setMaxNormalClouds(10);
 			cloudManager2.setMaxLightningClouds(1);
 		stage.addActor(backgroundLayer);
 		//balloonPattern = new BalloonPattern(player, stage, 10);
@@ -103,6 +114,7 @@ public class GameScreen implements Screen
 		stage.addActor(cloudGroup);
 		
 		balloonManager = new BalloonManager(balloonGroup, player);
+		difficulty = new DifficultyManager(player, cloudManager, cloudManager2);
 		//balloonManager.setMaxRedBalloon(100);
 		stage.addActor(hud);
 
@@ -134,8 +146,7 @@ public class GameScreen implements Screen
 		cloudManager.update();
 		cloudManager2.update();
 		balloonManager.update();
-		//balloonPattern.update();
-		//balloonPattern2.update();
+		difficulty.update();
 		
 
 		if (background_y < 0) // move the background
@@ -175,7 +186,8 @@ public class GameScreen implements Screen
 	@Override
 	public void resize(int width, int height)
 	{
-		stage.setViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
+		stage.getViewport().update(width, height);
+		//stage.setViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
 	}
 
 	@Override

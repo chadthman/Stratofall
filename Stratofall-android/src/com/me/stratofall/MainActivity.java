@@ -6,6 +6,7 @@ import android.view.WindowManager;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.stackmob.android.sdk.common.StackMobAndroid;
 
 public class MainActivity extends AndroidApplication
 {
@@ -14,9 +15,9 @@ public class MainActivity extends AndroidApplication
 	{ 
 		super.onCreate(savedInstanceState);
 
+		//StackMobAndroid.init(getApplicationContext(), 0, "<Development Key Goes Here>"); //Development key need to change to production key when released
 		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		cfg.useGL20 = true;
 		cfg.useCompass = false;
 		cfg.useAccelerometer = true;
 //		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);

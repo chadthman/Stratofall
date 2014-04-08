@@ -26,6 +26,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.me.stratofall.Stratofall;
 import com.me.stratofall.objects.balloons.BalloonManager;
 import com.me.stratofall.objects.clouds.CloudManager;
@@ -78,17 +80,18 @@ public class MainMenuScreen implements Screen
 	@Override
 	public void resize(int width, int height)
 	{
-		stage.setViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
+		stage.getViewport().update(width, height);
+		//stage.setViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
 	}
 
 	@Override
 	public void show()
 	{		
 		//stage = new Stage(Stratofall.WIDTH, Stratofall.HEIGHT);
-		stage = new Stage();
+		stage = new Stage(new StretchViewport(Stratofall.WIDTH, Stratofall.HEIGHT));
 		Gdx.input.setInputProcessor(stage); //now we can touch stage objects and get input
 		
-		menuMusic = Stratofall.assets.get("sounds/background/background_piano.ogg", Music.class);
+		menuMusic = Stratofall.assets.get("sounds/background/background_piano.mp3", Music.class);
 		menuMusic.setLooping(true);
 		menuMusic.play();
 		

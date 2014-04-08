@@ -21,7 +21,7 @@ public class LightningCloud extends Cloud
 		
 		//load sound effect
 		//effectSound = Gdx.audio.newSound(Gdx.files.internal("sounds/effect/sound_lightning.wav")); //this sound is actually for lightning clouds, just temporary
-		effectSound = Stratofall.assets.get("sounds/effect/sound_lightning.ogg", Sound.class);
+		effectSound = Stratofall.assets.get("sounds/effect/sound_lightning.mp3", Sound.class);
 		
 		//give a random locaton on the x axis
 		setRandomXPosition();

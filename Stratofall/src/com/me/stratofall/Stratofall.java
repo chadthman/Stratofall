@@ -29,7 +29,7 @@ public class Stratofall extends Game
 	@Override
 	public void create() 
 	{	
-		GLTexture.setEnforcePotImages(false);
+		//GLTexture.setEnforcePotImages(false);
 		
 		loadAssets();
 		batch = new SpriteBatch();
@@ -40,11 +40,11 @@ public class Stratofall extends Game
 	}
 	private void loadAssets()
 	{
-		assets.load("sounds/background/background_piano.ogg", Music.class);
-		assets.load("sounds/background/game_music.ogg", Music.class);
-		assets.load("sounds/effect/sound_lightning.ogg", Sound.class);
-		assets.load("sounds/effect/pop.ogg", Sound.class);
-		assets.load("sounds/effect/heart_loss.ogg", Sound.class);
+		assets.load("sounds/background/background_piano.mp3", Music.class);
+		assets.load("sounds/background/game_music.mp3", Music.class);
+		assets.load("sounds/effect/sound_lightning.mp3", Sound.class);
+		assets.load("sounds/effect/pop.mp3", Sound.class);
+		assets.load("sounds/effect/heart_loss.mp3", Sound.class);
 		
 		assets.load("backgrounds/background_fog.png", Texture.class);
 		assets.load("backgrounds/background.jpg", Texture.class);

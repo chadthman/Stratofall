@@ -7,7 +7,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.me.stratofall.Player;
 import com.me.stratofall.Stratofall;
@@ -59,7 +59,7 @@ public class GameHud extends Actor
 		life_effect = new ParticleEffect();
 		life_effect.load(Gdx.files.internal("particles/effects/heart_explosion.p"), Gdx.files.internal("particles/effects"));
 		
-		lifeLostSoundEffect = Stratofall.assets.get("sounds/effect/heart_loss.ogg", Sound.class);
+		lifeLostSoundEffect = Stratofall.assets.get("sounds/effect/heart_loss.mp3", Sound.class);
 	}
 	
 	@Override
@@ -70,8 +70,9 @@ public class GameHud extends Actor
 		updateMetersDisplay();
 	}
 	
+	//changed all Spritebatch to Batch
 	@Override
-	public void draw(SpriteBatch batch, float parentAlpha)
+	public void draw(Batch batch, float parentAlpha)
 	{
 		super.draw(batch, parentAlpha);
 		drawLifeDisplay(batch, Gdx.graphics.getDeltaTime());
@@ -79,7 +80,7 @@ public class GameHud extends Actor
 		drawBalloonsDisplay(batch);
 	}
 	
-	private void drawBalloonsDisplay(SpriteBatch batch)
+	private void drawBalloonsDisplay(Batch batch)
 	{
 		whiteFont.setColor(1f,.96f,0f,1f); //yellow color
 		whiteFont.draw(batch, "Multiplier:", balloons_loc_x, balloons_loc_y);
@@ -87,7 +88,7 @@ public class GameHud extends Actor
 		whiteFont.draw(batch, Integer.toString(player.getBalloons())+"x", balloons_loc_x + 240, balloons_loc_y);
 	}
 	
-	private void drawMetersDisplay(SpriteBatch batch)
+	private void drawMetersDisplay(Batch batch)
 	{
 		//white.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 		whiteFont.setColor(1, 1, 1, 1);
@@ -101,7 +102,7 @@ public class GameHud extends Actor
 		
 	}
 	
-	private void drawLifeDisplay(SpriteBatch batch, float delta)
+	private void drawLifeDisplay(Batch batch, float delta)
 	{
 		int currentLife = 0;
 		for (Texture life : lives)

@@ -28,6 +28,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.me.stratofall.Stratofall;
 import com.me.stratofall.objects.balloons.BalloonManager;
 import com.me.stratofall.objects.clouds.CloudManager;
@@ -109,12 +110,14 @@ public class HighscoreScreen implements Screen
 
 	@Override
 	public void resize(int width, int height) {
-		stage.setViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
+		stage.getViewport().update(width, height);
+		//stage.setViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
 	}
 
 	@Override
 	public void show() {
-		stage = new Stage(Stratofall.WIDTH, Stratofall.HEIGHT);
+		stage = new Stage(new StretchViewport(Stratofall.WIDTH, Stratofall.HEIGHT));
+		//stage = new Stage(Stratofall.WIDTH, Stratofall.HEIGHT);
 		Gdx.input.setInputProcessor(stage); // now we can touch stage objects
 											// and get input
 		atlas = new TextureAtlas("ui/buttons.pack");

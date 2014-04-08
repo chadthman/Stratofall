@@ -21,6 +21,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.me.stratofall.Stratofall;
 import com.me.stratofall.objects.balloons.BalloonManager;
 import com.me.stratofall.objects.clouds.CloudManager;
@@ -53,6 +56,7 @@ public class CreditsScreen implements Screen{
 	private Label topHeading;
 	private Label creditsLabel;
 	private Button buttonBack;
+	private Viewport viewport;
 
 	public CreditsScreen(ScrollingLayer background, CloudManager cloudMan, BalloonManager balloonMan) 
 	{
@@ -76,13 +80,15 @@ public class CreditsScreen implements Screen{
 
 	@Override
 	public void resize(int width, int height) {
-		stage.setViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
+		stage.getViewport().update(width, height);
+		//stage.setViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
 	}
 
 	@Override
 	public void show() {
 		//Set up stage
-		stage = new Stage(Stratofall.WIDTH, Stratofall.HEIGHT);
+		stage = new Stage(new StretchViewport(Stratofall.WIDTH, Stratofall.HEIGHT));
+		//stage = new Stage(Stratofall.WIDTH, Stratofall.HEIGHT);
 		Gdx.input.setInputProcessor(stage); //now we can touch stage objects and get input
 		
 		//For scrolling background

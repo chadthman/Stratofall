@@ -38,7 +38,7 @@ public class BlueBalloon extends Balloon
 	@Override
 	void loadEffects()
 	{
-		effectSound = Stratofall.assets.get("sounds/effect/pop.ogg", Sound.class);
+		effectSound = Stratofall.assets.get("sounds/effect/pop.mp3", Sound.class);
 		
 		
 		effect = new ParticleEffect();

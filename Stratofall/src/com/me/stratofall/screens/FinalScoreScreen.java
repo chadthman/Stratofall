@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -36,13 +37,20 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.XmlWriter;
 import com.me.stratofall.Player;
 import com.me.stratofall.Stratofall;
 import com.me.stratofall.objects.balloons.BalloonManager;
 import com.me.stratofall.objects.clouds.CloudManager;
+import com.me.stratofall.utils.GlobalScore;
 import com.me.stratofall.utils.Score;
 import com.me.stratofall.utils.ScrollingLayer;
+
+/*
+ * Stackmob has been deprecated so the commented out code is made for the global scores using Stackmob
+ * Until a replacement has been found global scores are not used.
+ */
 
 public class FinalScoreScreen implements Screen {
 
@@ -68,6 +76,8 @@ public class FinalScoreScreen implements Screen {
 	private BalloonManager balloonManager;
 	private ScrollingLayer backgroundLayer;
 	private Texture backgroundTexture;
+	private Window globalHighScoreWindow;
+	private Button globalHighScoreButtonContinue;
 	
 	public FinalScoreScreen(final Player player)
 	{
@@ -212,13 +222,15 @@ public class FinalScoreScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		stage.setViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
+		stage.getViewport().update(width, height);
+		//stage.setViewport(Stratofall.WIDTH, Stratofall.HEIGHT);
 	}
 
 	@Override
 	public void show() {
 		//Set up stage
-		stage = new Stage(Stratofall.WIDTH, Stratofall.HEIGHT);
+		stage = new Stage(new StretchViewport(Stratofall.WIDTH, Stratofall.HEIGHT));
+		//stage = new Stage(Stratofall.WIDTH, Stratofall.HEIGHT);
 		Gdx.input.setInputProcessor(stage); //now we can touch stage objects and get input
 		
 		//For scrolling background
@@ -336,7 +348,7 @@ public class FinalScoreScreen implements Screen {
 		stage.addActor(outerTable);
 		stage.addAction(Actions.sequence(Actions.alpha(0), Actions.fadeIn(0.5f)));
 		
-		//Window creation
+		//High Score Window creation
 		////////////////////////////////////////////////////////////////////////////////////////////
 		
 		//Create the window style
@@ -344,7 +356,7 @@ public class FinalScoreScreen implements Screen {
 		windowStyle.titleFont = bananaBrickMenu;
 		
 		//Create the window
-		enterNameWindow = new Window("Tap to enter a name", windowStyle);
+		enterNameWindow = new Window("Please enter a name", windowStyle);
 		
 		//Create the text field style
 		TextFieldStyle textFieldStyle = new TextFieldStyle();
@@ -383,6 +395,51 @@ public class FinalScoreScreen implements Screen {
 				setPlayerName(nameField.getText());
 				addScore(playerScore);
 				Gdx.input.setOnscreenKeyboardVisible(false);
+//				if(isGlobalHighScore(playerScore))
+//				{
+//					addGlobalScore(playerScore);
+//					stage.clear();
+//					stage.addActor(backgroundLayer);
+//					stage.addActor(balloonGroup);
+//					stage.addActor(cloudGroup);
+//					stage.addActor(globalHighScoreWindow);
+//					stage.addAction(Actions.sequence(Actions.alpha(0), Actions.fadeIn(0.5f)));
+//				} else {
+					stage.addAction(Actions.sequence(Actions.fadeOut(0.5f), Actions.run(new Runnable() {
+						
+						@Override
+						public void run() {
+							((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen());
+							dispose();
+						}
+					})));
+				//}
+			}
+		});
+		
+		//Set up the window layout
+		enterNameWindow.setBounds(0, 0, 500, 500);
+		enterNameWindow.add(nameField).padBottom(75).minWidth(100).expandX().fillX().colspan(3).row();
+		enterNameWindow.add(windowButtonContinue).expandX().align(Align.center).row();
+		enterNameWindow.setPosition(Stratofall.WIDTH/2 - enterNameWindow.getWidth()/2, 100 + (Stratofall.HEIGHT/2 - enterNameWindow.getHeight()/2));
+		enterNameWindow.setMovable(false);
+		
+		//Stackmob global high scores window
+		//////////////////////////////////////////////////////////////////////////////////////////////
+		
+		//Create the window
+		globalHighScoreWindow = new Window("New Global High Score!", windowStyle);
+		
+		//Create the continue button
+		globalHighScoreButtonContinue = new Button(textButtonStyleCONTINUE);
+		globalHighScoreButtonContinue.addListener(new ClickListener()
+		{
+			@Override
+			public void clicked(InputEvent event, float x, float y)
+			{
+//				setPlayerName(nameField.getText());
+//				addScore(playerScore);
+//				Gdx.input.setOnscreenKeyboardVisible(false);
 				stage.addAction(Actions.sequence(Actions.fadeOut(0.5f), Actions.run(new Runnable() {
 					
 					@Override
@@ -394,13 +451,90 @@ public class FinalScoreScreen implements Screen {
 			}
 		});
 		
-		//Set up the window layout
-		enterNameWindow.setBounds(0, 0, 500, 500);
-		enterNameWindow.add(nameField).padBottom(75).minWidth(100).expandX().fillX().colspan(3).row();
-		enterNameWindow.add(windowButtonContinue).expandX().align(Align.center).row();
-		enterNameWindow.setPosition(Stratofall.WIDTH/2 - enterNameWindow.getWidth()/2, 100 + (Stratofall.HEIGHT/2 - enterNameWindow.getHeight()/2));
-		enterNameWindow.setMovable(false);
+		globalHighScoreWindow.setBounds(0, 0, 500, 500);
+		globalHighScoreWindow.add(globalHighScoreButtonContinue).expandX().align(Align.center).row();
+		
 	}
+	
+//	private void addGlobalScore(Score score)
+//	{
+//		int smallestItem = 0;
+//		int index = 0;
+//		
+//		ArrayList<Score> oldScores = getGlobalHighScores();
+//		if (oldScores.size() < 10)
+//		{
+//			oldScores.add(score);
+//			storeGlabalScore(oldScores);
+//		} else {
+//			oldScores.add(score);
+//			smallestItem = oldScores.get(0).getScore();
+//			for (Score oldScore : oldScores)
+//			{
+//				if (smallestItem >= oldScore.getScore())
+//				{
+//					smallestItem = oldScore.getScore();
+//					index = oldScores.indexOf(oldScore);
+//				}
+//			}
+//			oldScores.remove(oldScores.remove(index));
+//			storeGlobalScore(oldScores);
+//		}
+//	}
+//	
+//	private void storeGlobalScore(ArrayList<Score> score)
+//	{
+//		GlobalScore globalScore = new GlobalScore(score);
+//		globalScore.save();
+//	}
+	
+//	private boolean isGlobalHighScore(Score score)
+//	{
+//		ArrayList<Score> oldScores = getGlobalHighScores();
+//		if (oldScores.size() < 10)
+//		{
+//			return true;
+//		} else {
+//			for (Score oldScore : oldScores)
+//			{
+//				if (score.getScore() >= oldScore.getScore())
+//				{
+//					 return true;
+//				}
+//			}
+//			return false;
+//		}
+//	}
+	
+//	ArrayList<Score> globalScores;
+//	private ArrayList<Score> getGlobalHighScores()
+//	{
+//		
+//		GlobalScore globalScore = new GlobalScore();
+//		
+//		
+////		GlobalScore.query(GlobalScore.class, new StackMobQuery(), new StackMobQueryCallback<GlobalScore>() {
+////
+////			@Override
+////			public void failure(StackMobException arg0) {
+////				// TODO Auto-generated method stub
+////				
+////			}
+////
+////			@Override
+////			public void success(List<Score> scores) {
+////				globalScores = (ArrayList<Score>) scores;
+////			}
+////
+////			@Override
+////			public void success(List<GlobalScore> arg0) {
+////				// TODO Auto-generated method stub
+////				
+////			}
+////		});
+//		return globalScores;
+//		
+//	}
 
 	@Override
 	public void hide() {
